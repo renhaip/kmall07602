@@ -1,7 +1,9 @@
 package com.kgc.kmall.managerweb.controller;
 
+import com.kgc.kmall.bean.PmsBaseAttrInfo;
 import com.kgc.kmall.bean.PmsBaseCatalog1;
 import com.kgc.kmall.bean.PmsBaseCatalog2;
+import com.kgc.kmall.bean.PmsBaseCatalog3;
 import com.kgc.kmall.service.CatalogService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,4 +32,10 @@ public class CatalogController {
     public List<PmsBaseCatalog2> getCatalog2(Integer catalog1Id){
         return catalogService.getCatalog2(catalog1Id);
     }
+    @RequestMapping("/getCatalog3")
+    public List<PmsBaseCatalog3> getCatalog3(Integer catalog2Id){
+        return catalogService.getCatalog3(catalog2Id);
+    }
+
+
 }
