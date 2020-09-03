@@ -25,6 +25,12 @@
             <artifactId>kmall-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+        <!--工具包-->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
