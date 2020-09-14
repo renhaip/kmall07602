@@ -83,7 +83,7 @@ public class SpuServiceImpl implements SpuService {
         for (PmsProductSaleAttr pmsProductSaleAttr : pmsProductSaleAttrs) {
             //根据spuid和销售属性id查询销售属性值
             pmsProductSaleAttrValueExample example1=new pmsProductSaleAttrValueExample();
-            PmsProductSaleAttrExample.Criteria criteria1 = example.createCriteria();
+            pmsProductSaleAttrValueExample.Criteria criteria1 = example1.createCriteria();
             criteria1.andProductIdEqualTo(spuId.longValue());
             criteria1.andSaleAttrIdEqualTo(pmsProductSaleAttr.getSaleAttrId());
             List<pmsProductSaleAttrValue> pmsProductSaleAttrValues = productSaleAttrValueMapper.selectByExample(example1);
@@ -91,6 +91,21 @@ public class SpuServiceImpl implements SpuService {
             pmsProductSaleAttr.setSpuSaleAttrValueList(pmsProductSaleAttrValues);
         }
 
+        return pmsProductSaleAttrs;
+    }
+
+    @Override
+    public List<PmsProductImage> spuImageList(Long spuId) {
+        PmsProductImageExample example=new PmsProductImageExample();
+        PmsProductImageExample.Criteria criteria = example.createCriteria();
+        criteria.andProductIdEqualTo(spuId);
+        List<PmsProductImage> pmsProductImages = pmsProductImageMapper.selectByExample(example);
+        return pmsProductImages;
+    }
+
+    @Override
+    public List<PmsProductSaleAttr> spuSaleAttrListIsCheck(Long spuId, Long skuId) {
+        List<PmsProductSaleAttr> pmsProductSaleAttrs = pmsProductSaleAttrMapper.spuSaleAttrListIsCheck(spuId, skuId);
         return pmsProductSaleAttrs;
     }
 }

@@ -22,9 +22,12 @@ public class AttrController {
     @Reference
     AttrService attrService;
 
+
+
     @RequestMapping("/attrInfoList")
     public List<PmsBaseAttrInfo> attrInfoList(Integer catalog3Id){
         List<PmsBaseAttrInfo> infoList = attrService.select(catalog3Id);
+
         return infoList;
     }
 

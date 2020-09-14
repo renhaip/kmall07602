@@ -1,8 +1,6 @@
 package com.kgc.kmall.managerweb.controller;
 
-import com.kgc.kmall.bean.PmsBaseSaleAttr;
-import com.kgc.kmall.bean.PmsProductInfo;
-import com.kgc.kmall.bean.PmsProductSaleAttr;
+import com.kgc.kmall.bean.*;
 import com.kgc.kmall.service.SpuService;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.dubbo.config.annotation.Reference;
@@ -83,6 +81,11 @@ public class SpuController {
     public  List<PmsProductSaleAttr> spuSaleAttrList(Integer spuId){
         List<PmsProductSaleAttr> pmsProductSaleAttrs = spuService.spuSaleAttrList(spuId);
         return pmsProductSaleAttrs;
+    }
 
+    @RequestMapping("/spuImageList")
+    public List<PmsProductImage> spuImageList(Long spuId){
+        List<PmsProductImage> pmsBaseSaleAttrs= spuService.spuImageList(spuId);
+        return  pmsBaseSaleAttrs;
     }
 }
