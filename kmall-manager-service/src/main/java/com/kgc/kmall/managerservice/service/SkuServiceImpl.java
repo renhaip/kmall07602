@@ -75,4 +75,9 @@ public class SkuServiceImpl implements SkuService {
         PmsSkuInfo pmsSkuInfo = pmsSkuInfoMapper.selectByPrimaryKey(id);
         return pmsSkuInfo;
     }
+
+    @Override
+    public List<PmsSkuInfo> selectBySpuId(Long spuId) {
+        return pmsSkuInfoMapper.selectBySpuId(spuId);
+    }
 }
