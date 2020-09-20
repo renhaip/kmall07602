@@ -19,4 +19,9 @@ public interface SkuService {
     List<PmsSkuInfo> selectBySpuId(Long spuId);
 
 
+
+    //查询全部的方法
+    List<PmsSkuInfo> getAllSku();
+
+
 }
