@@ -11,6 +11,7 @@ import org.apache.dubbo.config.annotation.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author shkstart
@@ -77,5 +78,21 @@ public class AttrServiceImpl implements AttrService {
         criteria.andAttrIdEqualTo(attrId.longValue());
         List<PmsBaseAttrValue> pmsBaseAttrValues = pmsBaseAttrValueMapper.selectByExample(example);
         return pmsBaseAttrValues;
+    }
+
+    @Override
+    public List<PmsBaseAttrInfo> selectAttrInfoValueListByValueId(Set<Long> valueIds) {
+            StringBuffer buffer=new StringBuffer();
+            String str="";
+        for (Long valueId : valueIds) {
+            buffer.append(valueId+",");
+        }
+        if(buffer.length()>0){
+            str=buffer.substring(0,buffer.length()-1);
+        }else{
+            str="-1";
+        }
+        List<PmsBaseAttrInfo> pmsBaseAttrInfos = pmsBaseAttrInfoMapper.selectAttrInfoValueListByValueId(str);
+        return pmsBaseAttrInfos;
     }
 }

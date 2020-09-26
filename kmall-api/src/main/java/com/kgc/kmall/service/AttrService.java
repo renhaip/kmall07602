@@ -4,6 +4,7 @@ import com.kgc.kmall.bean.PmsBaseAttrInfo;
 import com.kgc.kmall.bean.PmsBaseAttrValue;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author shkstart
@@ -19,4 +20,7 @@ public interface AttrService {
     //根据id查询属性值
     public  List<PmsBaseAttrValue> getAttrValueList(Integer attrId);
 
+
+    //根据valueId的集合查询平台属性名和值
+    List<PmsBaseAttrInfo> selectAttrInfoValueListByValueId(Set<Long> valueIds);
 }
