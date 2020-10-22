@@ -2,6 +2,7 @@ package com.kgc.kmall.service;
 
 import com.kgc.kmall.bean.PmsSkuInfo;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -24,4 +25,5 @@ public interface SkuService {
     List<PmsSkuInfo> getAllSku();
 
 
+    boolean checkPrice(Long productSkuId, BigDecimal price);
 }

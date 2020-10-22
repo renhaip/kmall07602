@@ -1,6 +1,7 @@
 package com.kgc.kmall.service;
 
 import com.kgc.kmall.bean.Member;
+import com.kgc.kmall.bean.MemberReceiveAddress;
 
 import java.util.List;
 
@@ -16,4 +17,14 @@ public interface MemberService {
 
     //  增加用户的缓存
     void  addUserToken(String token,Long memberId);
+
+
+    //根据uid查询  实体对象
+    Member checkOauthUser(Long sourceUid);
+    //增加
+    Integer addOauthUser(Member member);
+
+    List<MemberReceiveAddress> getReceiveAddressByMemberId(Long memberId);
+
+    MemberReceiveAddress getReceiveAddressById(Long receiveAddressId);
 }

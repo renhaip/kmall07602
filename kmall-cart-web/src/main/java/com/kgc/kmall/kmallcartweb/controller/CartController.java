@@ -57,7 +57,11 @@ public class CartController {
         omsCartItem.setQuantity(num);
 
         //判断用户是否登陆
-        String  memberId="1";
+        String  memberId="";
+        if(request.getAttribute("memberId")!=null){
+            Integer id=(Integer) request.getAttribute("memberId");
+            memberId=id+"";
+        }
 
         //如果用户没有登陆
         if(StringUtils.isBlank(memberId)){
@@ -109,12 +113,14 @@ public class CartController {
                 quantity=quantity+num;
                 omsCartItemFromDb.setQuantity(quantity);
                 cartService.updateCart(omsCartItemFromDb);
+
+            // 同步缓存
+            cartService.flushCartCache(memberId);
         }
 
 
 
-        // 同步缓存
-        cartService.flushCartCache(memberId);
+
 
         return "redirect:/success.html";
     }
@@ -139,7 +145,11 @@ public class CartController {
     public String cartList(ModelMap modelMap,HttpServletRequest request){
         List<OmsCartItem> omsCartItems=new ArrayList<>();
 
-        String memberId="1";
+        String memberId="";
+        if(request.getAttribute("memberId")!=null){
+            Integer id=(Integer) request.getAttribute("memberId");
+            memberId=id+"";
+        }
         //memberId不为空的话  已经登陆  查询db
         if(StringUtils.isNotBlank(memberId)){
             //已经登陆 查询db
@@ -169,7 +179,11 @@ public class CartController {
     public Map<String,Object> checkCart(String isChecked, Long skuId, HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> map=new HashMap<>();
 
-        String memberId="1";
+        String memberId="";
+        if(request.getAttribute("memberId")!=null){
+            Integer id=(Integer) request.getAttribute("memberId");
+            memberId=id+"";
+        }
 
         if(StringUtils.isNotBlank(memberId)){
                 //调用服务,修改状态
@@ -226,13 +240,13 @@ public class CartController {
     }
 
 
-
+/*
     @LoginRequired(value = true)
     @RequestMapping("toTrade")
     public String toTrade() {
 
         return "toTrade";
-    }
+    }*/
 
 
 
