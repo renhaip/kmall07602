@@ -12,4 +12,6 @@ public interface OrderService {
     String checkTradeCode(Long memberId, String tradeCode);
 
     void saveOrder(OmsOrder omsOrder);
+
+    OmsOrder getOrderByOutTradeNo(String outTradeNo);
 }
